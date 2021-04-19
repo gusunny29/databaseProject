@@ -10,6 +10,8 @@
 7. A user to domain object relationship we have implemented is with a player and a trade market. Within any sport association, there is a trade market where one can see whether a player is a free agent or not. 
 8. The domain object to domain object relationship we have is between the trade market and the teams. A trade market can have multiple teams engaged in it.
 9. The portable enumaration we have incorporated is within our user as a coach. Because there are multiple roles of coaches, we have classified 4 different types of coaches: Head coach, offensive coach, defensive coach, and assistant coach.
+
+UML Diagram: https://github.com/gusunny29/databaseProject/blob/main/db_design_final_project_UML.pdf
  
 
 
