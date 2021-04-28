@@ -2,8 +2,12 @@ package com.example.springtemplate.daos;
 
 
 import com.example.springtemplate.models.Player;
+import com.example.springtemplate.models.SportsAssociation;
+import com.example.springtemplate.models.Team;
 import com.example.springtemplate.repositories.PlayerRepository;
 import java.util.List;
+
+import com.example.springtemplate.repositories.TeamRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -21,9 +25,20 @@ import org.springframework.web.bind.annotation.RestController;
     @Autowired
     PlayerRepository playerRepository;
 
+    @Autowired
+    TeamRepository teamRepository;
+
     @PostMapping("/api/players")
     public Player createPlayer(@RequestBody Player player) {
       return playerRepository.save(player);
+    }
+
+
+    @GetMapping("/api/teams/{team_id}/players")
+    public List<Player> findPlayerForTeam(
+            @PathVariable("team_id") Integer said) {
+      Team team = teamRepository.findById(said).get();
+      return team.getPlayers();
     }
 
     @GetMapping("/api/players")

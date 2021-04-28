@@ -1,31 +1,52 @@
 import teamService from "./team-service"
+import saService from "../sportsAssociations/sa-service"
 
 const {useState, useEffect} = React
-const {useParams, useHistory} = window.ReactRouterDOM;
+const {useParams, useHistory, Link} = window.ReactRouterDOM;
 
 const TeamEditorForm = () => {
     const [team, setTeam] = useState({})
-    const {teamId} = useParams()
+    const [teamCopy, setTeamCopy] = useState({})
+    const [sas, setSAs] = useState({})
+    const {teamId, saId } = useParams()
     const history = useHistory()
+
     useEffect(() => {
         findTeamById(teamId)
+        findAllSAs()
     }, []);
+
     const findTeamById = (id) =>
         teamService.findTeamById(id)
-            .then(team => setTeam(team))
-    const updateTeam = (id, newSection) =>
+            .then(team => {
+                setTeam(team)
+                setTeamCopy(team)
+            });
+
+    const updateTeam = (id, newTeam) =>
         teamService.updateTeam(id, newTeam)
             .then(() => history.goBack())
     const deleteTeam = (id) =>
         teamService.deleteTeam(id)
             .then(() => history.goBack())
-    
+    const createTeamForSA = (saId, team) =>
+        teamService.createTeamForSA(saId, team)
+            .then(() => history.goBack());
+    const findAllSAs = () =>
+        saService.findAllSAs()
+            .then(sas => setSAs(sas))
+
     return (
         <div>
+            <div>
+                <Link to={'/'}>
+                    Home
+                </Link>
+            </div>
             <h2>
                 Team Editor
             </h2>
-            <label>Id</label>
+            <label> Id </label>
             <input
                 className="form-control margin-bottom-10px"
                 readOnly={true}
@@ -62,7 +83,7 @@ const TeamEditorForm = () => {
             </label>
             <br/>
             <button
-                onClick={() => updateTeam(team.id, team)}
+                onClick={teamCopy.name ? () => updateTeam(team.id, team) : () => createTeamForSA(saId, team)}
                 className="btn btn-success btn-block">Save</button>
             <button
                 onClick={() => {
@@ -72,6 +93,18 @@ const TeamEditorForm = () => {
             <button
                 onClick={() => deleteTeam(team.id)}
                 className="btn btn-danger btn-block margin-left-10px">Delete</button>
+
+            <br/>
+            <br/>
+            <div>
+                {
+                    team.name &&
+                    <Link to={`/teams/${team.id}/players`}>
+                        Click here to view the roster of the {team.name}.
+                    </Link>
+                }
+            </div>
+
         </div>
     )
 }

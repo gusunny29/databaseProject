@@ -1,4 +1,5 @@
 const PLAYERS_URL = "http://localhost:8080/api/players"
+const TEAM_URL = "http://localhost:8080/api/teams"
 
 export const findAllPlayers = () =>
     fetch(PLAYERS_URL)
@@ -12,6 +13,18 @@ export const findPlayerById = (id) =>
     .then(response => response.json())
 
 
+export const findPlayerForTeam = (teamId) =>
+    fetch(`${TEAM_URL}/${teamId}/players`)
+        .then(response => response.json());
+
+
+export const createPlayerForTeam = (teamId, player) =>
+    fetch(`${TEAM_URL}/${teamId}/players`, {
+        method: 'POST',
+        body: JSON.stringify(player),
+        headers: {'content-type': 'application/json'}
+    })
+    .then(response => response.json())
 
 // TODO: delete a user by their ID
 export const deletePlayer = (id) =>
@@ -39,9 +52,11 @@ export const updatePlayer = (id, player) =>
 
 // TODO: export all functions as the API to this service
 export default {
-  findAllPlayers,
-  findPlayerById,
-  deletePlayer,
-  createPlayer,
-  updatePlayer
+    createPlayerForTeam,
+    findAllPlayers,
+    findPlayerById,
+    deletePlayer,
+    createPlayer,
+    updatePlayer,
+    findPlayerForTeam
 }

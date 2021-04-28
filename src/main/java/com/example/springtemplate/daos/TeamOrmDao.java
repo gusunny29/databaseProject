@@ -28,15 +28,15 @@ public class TeamOrmDao {
   public Team createTeamForSportsAssoc(
       @PathVariable("saId") Integer said,
       @RequestBody Team team) {
-    team = teamRepository.save(team);
+
     SportsAssociation sportsAssoc= sportsAssocRepository.findById(said).get();
     team.setSportsAssoc(sportsAssoc);
     return teamRepository.save(team);
   }
 
-  @GetMapping("/api/sportsAssociation/{said}/teams")
+  @GetMapping("/api/sportsAssociations/{saId}/teams")
   public List<Team> findTeamsForSportsAssoc(
-      @PathVariable("said") Integer said) {
+      @PathVariable("saId") Integer said) {
     SportsAssociation sportsAssoc= sportsAssocRepository.findById(said).get();
     return sportsAssoc.getTeams();
   }

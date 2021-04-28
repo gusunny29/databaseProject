@@ -31,16 +31,6 @@ public class SportsAssocOrmDao {
   }
 
 
-  @GetMapping("/api/update/sportsAssociations/{saId}/{password}")
-  public SportsAssociation updateSportsAssoc(
-      @PathVariable("saId") Integer id,
-      @PathVariable("password") String newPass) {
-    SportsAssociation sa = this.findSportsAssocById(id);
-    sa.setSport(newPass);
-    return sportsAssocRepository.save(sa);
-  }
-
-
 
   @PutMapping("/api/sportsAssociations/{saId}")
   public SportsAssociation updateSportsAssoc(

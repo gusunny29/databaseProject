@@ -1,19 +1,20 @@
-import SAEditorInline from "./sa-editor-inline";
+
 import SAService from "./sa-service"
 
 const SA_URL = "http://localhost:8080/api/sportsAssociations"
+const {Link} = window.ReactRouterDOM;
 const { useState, useEffect } = React;
 
 const SaList = () => {
     const [sas, setSAs] = useState([])
-    const [newSA, setNewSA] = useState({})
+    const [newSA, setNewSA] = useState([])
+
     useEffect(() => {
         findAllSAs()
     }, [])
     const createSA = (sa) =>
         SAService.createSA(sa)
             .then(sa => {
-                setNewSA({sport:''})
                 setSAs(sas => ([...sas, sa]))
             })
     const updateSA = (id, newSA) =>
@@ -29,27 +30,21 @@ const SaList = () => {
         <div>
             <h2>Sports Associations</h2>
             <ul className="list-group">
-                <li className="list-group-item">
-                    <div className="row">
-                        <div className="col">
-                            <input placeholder="Sports Association Title"
-                                   sport="Please enter a sport for the association" className="form-control" value={newSA.sport}
-                                   onChange={(e) => setNewSA(newSA => ({...newSA, sport: e.target.value}))}/>
-                        </div>
-                        <div className="col-3">
-                            <i className="fas fa-plus fa-2x float-right" onClick={() => createSA(newSA)}></i>
-                        </div>
-                    </div>
+                {
+                    sas.map(sa =>
+                        <li key={sa.id} className="list-group-item">
+                            <Link to ={`/sportsAssociations/${sa.id}`}>
+                                {`${sa.sport}`}
+                            </Link>
+                        </li>)
+                }
+                <li>
+                    <Link to ={'/sportsAssociations/create'}>
+                        <button className='create-btn btn btn-primary'>
+                            Add Sports Association
+                        </button>
+                    </Link>
                 </li>
-            {
-                sas.map(sa =>
-                    <li key={sa.id} className="list-group-item">
-                        <SAEditorInline key={sa._id}
-                            updateSA={updateSA}
-                            deleteSA={deleteSA}
-                            sa={sa}/>
-                    </li>)
-            }
             </ul>
         </div>
     )

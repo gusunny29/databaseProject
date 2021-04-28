@@ -1,6 +1,14 @@
 const SA_URL = "http://localhost:8080/api/sportsAssociations"
 const TEAM_URL = "http://localhost:8080/api/teams"
 
+export const createTeam = (team) =>
+    fetch(TEAM_URL, {
+        method: 'POST',
+        body:JSON.stringify(team),
+        headers: {'content-type': 'application/json'}
+    })
+        .then(response => response.json())
+
 export const createTeamForSA = (saId, team) =>
     fetch(`${SA_URL}/${saId}/teams`, {
         method: 'POST',
@@ -8,6 +16,10 @@ export const createTeamForSA = (saId, team) =>
         headers: {'content-type': 'application/json'}
     })
     .then(response => response.json())
+
+export const findAllTeams = () =>
+    fetch(TEAM_URL)
+        .then(response=>response.json())
 
 export const findTeamsForSA = (saId) =>
     fetch(`${SA_URL}/${saId}/teams`)
@@ -31,7 +43,9 @@ const deleteTeam = (id) =>
     })
 
 export default {
+    createTeam,
     createTeamForSA,
+    findAllTeams,
     findTeamsForSA,
     findTeamById,
     updateTeam,
