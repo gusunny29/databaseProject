@@ -1,6 +1,6 @@
 # databaseProject
 
-1. Project Name: Sports Database
+1. Project Name: Sports Association Database
 2. Team Name: ChunnyGu
 3. Names: Sunny Gu and James Chun
    Section 4
