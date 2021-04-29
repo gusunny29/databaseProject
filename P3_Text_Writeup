@@ -1,0 +1,23 @@
+In this project, the problem that we are trying to solve is to enable the average sports fan to be up-to-date with the composition 
+of any sports league. This is because in sports, there are constantly moving variables within different associations and teams, making 
+it difficult for the average sports fan to recognize. Not only that, but players and coaches are constantly being moved around different 
+teams and leagues, making people feel confused and not up-to-date on their knowledge of sports. Lastly, a big part of sports involve the trade 
+market, which is fast-paced because of players being dropped and picked up as free agents. 
+
+
+In order to solve the problem of the fast-paced nature of sports, we decided to create a simple sports database where people can learn about all 
+facets of sports associations. Rather than having to manually search up facts about players, coaches, and teams, this database will have all the key 
+statistics of a team or players such as the conference they play in, wins and losses, and even the amount of years a player has been playing. In addition, 
+in order to combat the issue of big data, we are condensing our data into sports associations rather than the type of sport. This is because it is less effective 
+to track players, teams, and coaches based on the type of sport they play rather than tracking the specific sports league they are in.
+
+
+The typical user that would use our database ranges across the spectrum. For instance, a user with no knowledge in sports can use our database to 
+look at the different types of teams in a sports league. Not only that, but a user who is somewhat engaged in sports can use our database to fill in
+missing knowledge of players, coaches, and teams. Our users can even be experts and fanatics of sports, searching up specific statistics in order to
+stay up-to-date. Overall, there is no specific user we are targeting. From amaetur to extreme ones, our sports fans can utilize our database for whatever reason.
+
+
+ For our two domain objects, we have decided to create a team and trade market table. In this, one can see the name of the team, which conference it 
+ plays in, their wins and losses, and the players in it. In addition, one can see the trade market's open and close date along with the players within 
+ an association.
