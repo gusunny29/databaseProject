@@ -41,6 +41,16 @@ import org.springframework.web.bind.annotation.RestController;
       return team.getPlayers();
     }
 
+    @PostMapping("/api/teams/{teamId}/players")
+    public Player createPlayerForTeam(
+            @PathVariable("teamId") Integer teamId,
+            @RequestBody Player player) {
+
+      Team team= teamRepository.findById(teamId).get();
+      player.setTeam(team);
+      return playerRepository.save(player);
+    }
+
     @GetMapping("/api/players")
     public List<Player> findAllPlayers() {
       return playerRepository.findAllPlayers();

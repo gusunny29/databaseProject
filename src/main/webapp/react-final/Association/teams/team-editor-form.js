@@ -8,7 +8,7 @@ const TeamEditorForm = () => {
     const [team, setTeam] = useState({})
     const [teamCopy, setTeamCopy] = useState({})
     const [sas, setSAs] = useState({})
-    const {teamId, saId } = useParams()
+    const {teamId, saId} = useParams()
     const history = useHistory()
 
     useEffect(() => {
@@ -38,6 +38,7 @@ const TeamEditorForm = () => {
 
     return (
         <div>
+
             <div>
                 <Link to={'/'}>
                     Home
@@ -83,7 +84,8 @@ const TeamEditorForm = () => {
             </label>
             <br/>
             <button
-                onClick={teamCopy.name ? () => updateTeam(team.id, team) : () => createTeamForSA(saId, team)}
+                onClick={teamCopy.name ? () => updateTeam(team.id, team) :
+                     () => createTeamForSA(saId, team)}
                 className="btn btn-success btn-block">Save</button>
             <button
                 onClick={() => {
@@ -98,7 +100,7 @@ const TeamEditorForm = () => {
             <br/>
             <div>
                 {
-                    team.name &&
+                    teamCopy.name &&
                     <Link to={`/teams/${team.id}/players`}>
                         Click here to view the roster of the {team.name}.
                     </Link>

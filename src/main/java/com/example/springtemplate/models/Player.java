@@ -26,7 +26,6 @@ import javax.persistence.Table;
     private String email;
     Date dateOfBirth = new Date();
 
-
     @ManyToOne
     @JsonIgnore
     private Team team;
@@ -54,7 +53,6 @@ import javax.persistence.Table;
     public void setDateOfBirth(Date date) {
       this.dateOfBirth = date;
     }
-
     public Team getTeam() {
       return this.team;
     }
@@ -64,7 +62,7 @@ import javax.persistence.Table;
 
 
 
-
+/*
     public Player(String position,
         int yearsPlaying, String username,
         String password, String first_name,
@@ -80,7 +78,11 @@ import javax.persistence.Table;
 
     }
 
+
+
     public Player() {}
+
+ */
   }
 
 

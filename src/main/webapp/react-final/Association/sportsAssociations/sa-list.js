@@ -12,11 +12,11 @@ const SaList = () => {
     useEffect(() => {
         findAllSAs()
     }, [])
-    const createSA = (sa) =>
-        SAService.createSA(sa)
-            .then(sa => {
-                setSAs(sas => ([...sas, sa]))
-            })
+     const createSA = (sa) =>
+         SAService.createSA(sa)
+             .then(sa => {
+                 setSAs(sas => ([...sas, sa]))
+             })
     const updateSA = (id, newSA) =>
         SAService.updateSA(id, newSA)
             .then(sa => setSAs(sas => (sas.map(sa => sa.id === id ? newSA : sa))))

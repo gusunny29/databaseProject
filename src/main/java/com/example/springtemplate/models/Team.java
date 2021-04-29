@@ -36,8 +36,6 @@ public class Team {
   }
 
 
-
-
   public Integer getId() {
     return id;
   }

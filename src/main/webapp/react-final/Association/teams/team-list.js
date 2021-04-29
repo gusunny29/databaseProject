@@ -51,7 +51,7 @@ const TeamList = () => {
                 <li>
                     {
 
-                        <Link to={sa.sport ? `/sportsAssociations/${saId}/teams/create` : '/teams/create'}>
+                        <Link to={`/sportsAssociations/${saId}/teams/create`}>
                             <button className='create-btn btn btn-primary'>
                                 {sa.sport ?
                                     `Add Team for ${sa.sport}` : 'Add Team'}

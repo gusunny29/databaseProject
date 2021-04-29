@@ -7,10 +7,10 @@ const SA_URL = "http://localhost:8080/api/sportsAssociations"
 const SaEditorForm = () => {
     const [sa, setSA] = useState({})
     const [saCopy, setSACopy] = useState({})
-    const {id} = useParams()
+    const {saId} = useParams()
     const history = useHistory()
     useEffect(() => {
-        findSAById(id)
+        findSAById(saId)
     }, []);
     const findSAById = (id) =>
         saService.findSAById(id)

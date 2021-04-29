@@ -48,6 +48,12 @@ const PlayerList = () => {
                         </Link>
                     }
                 </li>
+
+                <div>
+                    <Link to={'/'}>
+                        Click to go to homepage!
+                    </Link>
+                </div>
             </ul>
         </div>
         )

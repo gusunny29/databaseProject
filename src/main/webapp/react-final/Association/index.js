@@ -16,13 +16,14 @@ const App = () => {
                 <Route path={["/sportAssociations", "/"]} exact={true}>
                     <SAList/>
                 </Route>
-                <Route path= {["/sportsAssociations/:id", ' /sportsAssociations/create']} exact={true}>
+                <Route path= {["/sportsAssociations/:saId", ' /sportsAssociations/create']} exact={true}>
                     <SAEditorForm/>
                 </Route>
-                <Route path= {["/sportsAssociations/:id/teams", '/teams']} exact={true}>
+                <Route path= {["/sportsAssociations/:saId/teams", '/teams']} exact={true}>
                     <TeamList/>
                 </Route>
-                <Route path={["/teams/:teamId", '/teams/create', '/sportsAssociations/:id/teams/create']} exact={true}>
+                <Route path={['/sportsAssociations/:saId/teams/create',
+                    '/sportsAssociations/:saId/teams/:teamId']} exact={true}>
                     <TeamEditorForm/>
                 </Route>
                 <Route path= {[ "/teams/:teamId/players" , '/players']} exact={true}>
